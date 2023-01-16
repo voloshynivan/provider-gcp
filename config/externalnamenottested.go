@@ -124,4 +124,64 @@ var ExternalNameNotTestedConfigs = map[string]config.ExternalName{
 	"google_data_catalog_tag_template_iam_member": config.IdentifierFromProvider,
 	// projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}}
 	"google_data_catalog_tag_template_iam_policy": config.IdentifierFromProvider,
+
+	// datalossprevention
+	//
+	// Imported by using the following format: {{parent}}/deidentifyTemplates/{{name}}
+	"google_data_loss_prevention_deidentify_template": config.IdentifierFromProvider,
+	// Imported by using the following format: {{parent}}/inspectTemplates/{{name}}
+	"google_data_loss_prevention_inspect_template": config.IdentifierFromProvider,
+	// Imported by using the following format: {{parent}}/jobTriggers/{{name}}
+	"google_data_loss_prevention_job_trigger": config.IdentifierFromProvider,
+	// Imported by using the following format: {{parent}}/storedInfoTypes/{{name}}
+	"google_data_loss_prevention_stored_info_type": config.IdentifierFromProvider,
+
+	// dataplex
+	//
+	// Imported by using the following format: projects/{{project}}/locations/{{location}}/lakes/{{name}}
+	"google_dataplex_lake": config.TemplatedStringAsIdentifier("name", "projects/{{ .parameters.project }}/locations/{{ .parameters.location }}/lakes/{{ .external_name }}"),
+
+	// dataproc
+	//
+	// Imported by using the following format: projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+	"google_dataproc_autoscaling_policy": config.TemplatedStringAsIdentifier("policy_id", "projects/{{ .parameters.project }}/locations/{{ .parameters.location }}/autoscalingPolicies/{{ .external_name }}"),
+	// No Import
+	"google_dataproc_cluster": config.IdentifierFromProvider,
+	// Imported by using the following format: projects/{project}/regions/{region}/clusters/{cluster} roles/editor
+	"google_dataproc_cluster_iam_binding": config.TemplatedStringAsIdentifier("cluster", "projects/{ .parameters.project }/regions/{{ .parameters.region }}/clusters/{{ .external_name }} {{ .parameters.role }}"),
+	// Imported by using the following format: projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com
+	"google_dataproc_cluster_iam_member": config.TemplatedStringAsIdentifier("cluster", "projects/{ .parameters.project }/regions/{{ .parameters.region }}/clusters/{{ .external_name }} {{ .parameters.role }} {{ .parameters.member }}"),
+	// Imported by using the following format: projects/{project}/regions/{region}/clusters/{cluster}
+	"google_dataproc_cluster_iam_policy": config.TemplatedStringAsIdentifier("cluster", "projects/{ .parameters.project }/regions/{{ .parameters.region }}/clusters/{{ .external_name }}"),
+	// No Import
+	"google_dataproc_job": config.IdentifierFromProvider,
+	// Imported by using the following format: projects/{project}/regions/{region}/jobs/{job_id} roles/editor
+	"google_dataproc_job_iam_binding": config.TemplatedStringAsIdentifier("job_id", "projects/{ .parameters.project }/regions/{{ .parameters.region }}/jobs/{{ .external_name }} {{ .parameters.role }}"),
+	// Imported by using the following format: projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com
+	"google_dataproc_job_iam_member": config.TemplatedStringAsIdentifier("job_id", "projects/{ .parameters.project }/regions/{{ .parameters.region }}/jobs/{{ .external_name }} {{ .parameters.role }} {{ .parameters.member }}"),
+	// Imported by using the following format: projects/{project}/regions/{region}/jobs/{job_id}
+	"google_dataproc_job_iam_policy": config.TemplatedStringAsIdentifier("job_id", "projects/{ .parameters.project }/regions/{{ .parameters.region }}/jobs/{{ .external_name }}"),
+	// Imported by using the following format: projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
+	"google_dataproc_workflow_template": config.TemplatedStringAsIdentifier("name", "projects/{{ .parameters.project }}/locations/{{ .parameters.location }}/workflowTemplates/{{ .external_name }}"),
+
+	// google_datastore_index
+	//
+	// Imported by using the following format: projects/{{project}}/indexes/{{index_id}}
+	"google_datastore_index": config.IdentifierFromProvider,
+
+	// deploymentmanager
+	//
+	// Imported by using the following format: projects/{{project}}/deployments/{{name}}
+	"google_deployment_manager_deployment": config.TemplatedStringAsIdentifier("name", "projects/{{ .parameters.project }}/deployments/{{ .external_name }}"),
+
+	// dialogflow
+	//
+	// Imported by using the following format: {{project}}
+	"google_dialogflow_agent": config.ParameterAsIdentifier("project"),
+	// Imported by using the following format: {{name}}
+	"google_dialogflow_entity_type": config.IdentifierFromProvider,
+	// Imported by using the following format: {{name}}
+	"google_dialogflow_fulfillment": config.IdentifierFromProvider,
+	// Imported by using the following format: {{name}}
+	"google_dialogflow_intent": config.IdentifierFromProvider,
 }
