@@ -451,6 +451,22 @@ func Configure(p *config.Provider) { //nolint: gocyclo
 	p.AddResourceConfigurator("google_compute_project_metadata_item", func(r *config.Resource) {
 		r.MetaResource.ArgumentDocs["id"] = "an identifier for the resource with format `{{key}}`"
 	})
+
+	p.AddResourceConfigurator("google_compute_region_network_firewall_policy", func(r *config.Resource) {
+		config.MarkAsRequired(r.TerraformResource, "region")
+	})
+
+	p.AddResourceConfigurator("google_compute_region_network_firewall_policy_association", func(r *config.Resource) {
+		config.MarkAsRequired(r.TerraformResource, "region")
+	})
+
+	p.AddResourceConfigurator("google_compute_region_network_firewall_policy_rule", func(r *config.Resource) {
+		config.MarkAsRequired(r.TerraformResource, "region")
+	})
+
+	p.AddResourceConfigurator("google_compute_router_peer", func(r *config.Resource) {
+		config.MarkAsRequired(r.TerraformResource, "region")
+	})
 }
 
 // InstanceGroupExtractor extracts Instance Group from
