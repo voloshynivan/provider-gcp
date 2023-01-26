@@ -58,7 +58,9 @@ import (
 	"github.com/upbound/provider-gcp/config/spanner"
 	"github.com/upbound/provider-gcp/config/sql"
 	"github.com/upbound/provider-gcp/config/storage"
+	"github.com/upbound/provider-gcp/config/tpu"
 	"github.com/upbound/provider-gcp/config/vertexai"
+	"github.com/upbound/provider-gcp/config/vpcaccess"
 )
 
 const (
@@ -181,10 +183,12 @@ func GetProvider() *tjconfig.Provider {
 		spanner.Configure,
 		storage.Configure,
 		sql.Configure,
+		tpu.Configure,
 		redis.Configure,
 		bigquery.Configure,
 		beyondcorp.Configure,
 		vertexai.Configure,
+		vpcaccess.Configure,
 	} {
 		configure(pc)
 	}

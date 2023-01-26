@@ -491,4 +491,55 @@ var ExternalNameNotTestedConfigs = map[string]config.ExternalName{
 	"google_vertex_ai_index": config.TemplatedStringAsIdentifier("name", "projects/{{ .setup.configuration.project }}/locations/{{.parameters.region }}/indexes/{{ .external_name }}"),
 	// Imported by using the following projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
 	"google_vertex_ai_tensorboard": config.TemplatedStringAsIdentifier("display_name", "projects/{{ .setup.configuration.project }}/locations/{{ .parameters.region }}/tensorboards/{{ .external_name }}"),
+
+	// cloudplatform
+	//
+	// Imported by using the following billingAccounts/{billing_account_id}
+	"google_billing_subaccount": config.IdentifierFromProvider,
+	// Imported by using the following folders/folder-1234/constraints/serviceuser.services
+	"google_folder_organization_policy": config.TemplatedStringAsIdentifier("constraint", "folders/{{ .parameters.folder }}/constraints/{{ .external_name }}"),
+	// Imported by using the following 123456789/constraints/serviceuser.services
+	"google_organization_policy": config.TemplatedStringAsIdentifier("constraint", "{{ .parameters.org_id }}/constraints/{{ .external_name }}"),
+	// Imported by using the following projects/{{project}}/roles/{{role_id}}
+	"google_project_iam_custom_role": config.TemplatedStringAsIdentifier("role_id", "projects/{{ .setup.configuration.project }}/roles/{{ .external_name }}"),
+	// Imported by using the following projects/test-project:constraints/serviceuser.services
+	"google_project_organization_policy": config.TemplatedStringAsIdentifier("constraint", "projects/{{ .parameters.project }}:constraints/{{ .external_name }}"),
+
+	// iap
+	//
+	// Imported by using the following projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor user:jane@example.com
+	"google_iap_tunnel_instance_iam_member": config.IdentifierFromProvider,
+
+	// orgpolicy
+	//
+	// Imported by using the following {{parent}}/policies/{{name}}
+	"google_org_policy_policy": config.TemplatedStringAsIdentifier("name", "{{ .parameters.parent }}/policies/{{ .external_name }}"),
+
+	// tags
+	//
+	// Imported by using the following tagKeys/{{name}}
+	"google_tags_tag_key": config.IdentifierFromProvider,
+	// Imported by using the following tagKeys/{{tag_key}} roles/viewer user:jane@example.com
+	"google_tags_tag_key_iam_member": config.TemplatedStringAsIdentifier("tag_key", "tagKeys/{{ .external_name }} {{ .parameters.role }} {{ .parameters.member }}"),
+	// Imported by using the following tagValues/{{name}}
+	"google_tags_tag_value": config.IdentifierFromProvider,
+	// Imported by using the following tagValues/{{tag_value}} roles/viewer user:jane@example.com
+	"google_tags_tag_value_iam_member": config.TemplatedStringAsIdentifier("tag_value", "tagValues/{{ .external_name }} {{ .parameters.role }} {{ .parameters.member }}"),
+	// Imported by using the following tagBindings/{{name}}
+	"google_tags_tag_binding": config.IdentifierFromProvider,
+
+	// tpu
+	//
+	// Imported by using the following projects/{{project}}/locations/{{zone}}/nodes/{{name}}
+	"google_tpu_node": config.TemplatedStringAsIdentifier("name", "projects/{{ .setup.configuration.project }}/locations/{{ .parameters.zone }}/nodes/{{ .external_name }}"),
+
+	// vpcaccess
+	//
+	// Imported by using the following projects/{{project}}/locations/{{region}}/connectors/{{name}}
+	"google_vpc_access_connector": config.TemplatedStringAsIdentifier("name", "projects/{{ .setup.configuration.project }}/locations/{{ .parameters.region }}/connectors/{{ .external_name }}"),
+
+	// workflows
+	//
+	// No import
+	"google_workflows_workflow": config.IdentifierFromProvider,
 }
